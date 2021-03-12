@@ -1,0 +1,126 @@
+$color-white: #fff;
+$color-backGround: seashell;
+$color-nav: darksalmon;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    // padding: 0;
+}
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: black;
+    overflow-x: hidden;
+}
+.rotate-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+
+    &__list {
+        padding: 1rem;
+
+        &--item {
+            cursor: pointer;
+            padding: 1rem;
+            color: $color-white;
+            font-size: 2rem;
+            list-style: none;
+        }
+
+    }
+}
+main {
+    background-color: $color-backGround;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr min-content 1fr;
+    transition: transform 0.3s;
+}
+.show-nav {
+    transform: rotate(-25deg);
+    transition: transform 0.3s linear;
+}
+.heading {
+    grid-column: 2/3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-self: flex-end;
+
+    &__title {
+        font-size: 3rem;
+    }
+    span {
+        font-style: italic;
+        font-size: 1.5rem;
+    }
+}
+
+.navigation {
+    background-color: $color-nav;
+    border-radius: 50%;
+    position: absolute;
+    top: -10rem;
+    left: -10rem;
+    width: 20rem;
+    height: 20rem;
+    grid-column: 1/2;
+    transform: rotate(0);
+    transition: transform 0.3s linear;
+    z-index: 1;
+
+    &__button--open,
+    &__button--close {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        height: 10rem;
+        background: transparent;
+        border: 0;
+        font-size: 2.6rem;
+        color: $color-white;
+    }
+    &__button--open {
+        left: 60%;
+    }
+    &__button--close {
+        top: 60%;
+        transform: rotate(90deg);
+        transform-origin: top left;
+    }
+}
+
+.navigation__circle {
+    transform: (0);
+    transition: transform 0.3s linear;
+}
+
+.navigation__circle.active {
+    transform: rotate(-100deg);
+    transition: transform 0.3s linear;
+}
+.description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    grid-column: 2/3;
+    grid-row: 2/3;
+
+    &__title {
+        align-self: flex-start;
+        margin: 1rem;
+    }
+}
+
+img {
+    width: 70rem;
+    height: 60rem;
+}
